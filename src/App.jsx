@@ -2,11 +2,22 @@ import { useState } from 'react'
 
 function App() {
  
-  const [myValue , setMyValue] = useState('');
+  const [formData , setFormData] = useState({
+    title : "",
+    image: "",
+    content: "",
+    category: "News",
+    published: false
+  });
   const [articles, setArticles] = useState([]);
 
+
   const handleInputChange = (e) => {
-    setMyValue(e.target.value);
+    const {name, value, type, checked} = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
   }
 
   const handleFormSubmit = (e) => {
@@ -25,9 +36,15 @@ function App() {
   return (
     <>
       <div className="container">
-        <h1 className="mt-5">Hello world</h1>
+        <h1 className="mt-5">Gestione Articoli Blog</h1>
         <form onSubmit={handleFormSubmit}>
-          <input type="text" value={myValue} onChange={handleInputChange} placeholder="inserici l'articolo"/>
+          <input 
+          type="text" 
+          name="title" 
+          value={formData.title}
+          onChange={handleInputChange} 
+          placeholder="inserici l'articolo"/>
+          
           <button type='submit'>Invia</button>
         </form>
 
