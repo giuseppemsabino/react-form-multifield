@@ -47,7 +47,7 @@ function App() {
             name="title"
             value={formData.title}
             onChange={handleInputChange}
-            placeholder="inserici l'articolo"
+            placeholder="Titolo dell'articolo"
           />
 
           {/* image camp */}
@@ -91,14 +91,20 @@ function App() {
               Pubblica
             </label>
 
-          <button type="submit">Invia</button>
+          <button type="submit">Aggiungi</button>
         </form>
 
         <ul className="mt-3">
           {articles.map((article, index) => (
             <li key={index}>
-              {article}
-              <button onClick={() => handleDelete(index)}>🗑️</button>
+              <h3>{article.title}</h3>
+              {article.image && <img src={article.image} alt={article.title} />}
+              <p>{article.content}</p>
+              <p><strong>Categoria:</strong>{article.category}</p>
+              <p>
+                <strong>Pubblicato:</strong> {article.published ? "Si" : "No"}
+              </p>
+              <button onClick={() => handleDelete(index)}>🗑️ Rimuovi</button>
             </li>
           ))}
         </ul>
