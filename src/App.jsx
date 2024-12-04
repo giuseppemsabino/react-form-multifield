@@ -40,6 +40,8 @@ function App() {
       <div className="container">
         <h1 className="mt-5">Gestione Articoli Blog</h1>
         <form onSubmit={handleFormSubmit}>
+
+          {/* title camp */}
           <input
             type="text"
             name="title"
@@ -48,6 +50,7 @@ function App() {
             placeholder="inserici l'articolo"
           />
 
+          {/* image camp */}
           <input
             type="text"
             name="image"
@@ -55,6 +58,14 @@ function App() {
             onChange={handleInputChange}
             placeholder="URL immagine"
           />
+
+          {/* content camp  */}
+          <textarea
+              name="content"
+              value={formData.content}
+              onChange={handleInputChange}
+              placeholder="Contenuto dell'articolo"
+            ></textarea>
 
           <button type="submit">Invia</button>
         </form>
