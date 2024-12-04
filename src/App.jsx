@@ -67,6 +67,19 @@ function App() {
               placeholder="Contenuto dell'articolo"
             ></textarea>
 
+          {/* category camp */}
+          <select 
+          name="category" 
+          value={formData.category}
+          onChange={handleInputChange}
+          >
+
+          <option value="News">News</option>
+          <option value=""></option>
+          <option value=""></option>
+
+          </select>  
+
           <button type="submit">Invia</button>
         </form>
 
