@@ -74,11 +74,22 @@ function App() {
           onChange={handleInputChange}
           >
 
+          <option value="...">...</option>
           <option value="News">News</option>
-          <option value=""></option>
-          <option value=""></option>
+          <option value="Technology">Technology</option>
+          <option value="Life">Life</option>
 
           </select>  
+
+          <label>
+              <input
+                type="checkbox"
+                name="published"
+                checked={formData.published}
+                onChange={handleInputChange}
+              />
+              Pubblica
+            </label>
 
           <button type="submit">Invia</button>
         </form>
