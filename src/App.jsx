@@ -1,35 +1,37 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 function App() {
- 
-  const [formData , setFormData] = useState({
-    title : "",
+  const [formData, setFormData] = useState({
+    title: "",
     image: "",
     content: "",
     category: "News",
-    published: false
+    published: false,
   });
   const [articles, setArticles] = useState([]);
 
-
   const handleInputChange = (e) => {
-    const {name, value, type, checked} = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
       [name]: type === "checkbox" ? checked : value,
     });
-  }
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (myValue.trim()) {
-      setArticles([...articles, myValue]); // Aggiunge l'articolo alla lista
-      setMyValue(""); // Resetta l'input
-    }
-  }
+    setArticles([...articles, formData]);
+    setFormData({
+      title: "",
+      image: "",
+      content: "",
+      category: "News",
+      published: false,
+    });
+  };
   const handleDelete = (index) => {
-    const newArticles = [...articles]; 
-    newArticles.splice(index, 1); 
+    const newArticles = [...articles];
+    newArticles.splice(index, 1);
     setArticles(newArticles);
   };
 
@@ -38,14 +40,23 @@ function App() {
       <div className="container">
         <h1 className="mt-5">Gestione Articoli Blog</h1>
         <form onSubmit={handleFormSubmit}>
-          <input 
-          type="text" 
-          name="title" 
-          value={formData.title}
-          onChange={handleInputChange} 
-          placeholder="inserici l'articolo"/>
-          
-          <button type='submit'>Invia</button>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleInputChange}
+            placeholder="inserici l'articolo"
+          />
+
+          <input
+            type="text"
+            name="image"
+            value={formData.image}
+            onChange={handleInputChange}
+            placeholder="URL immagine"
+          />
+
+          <button type="submit">Invia</button>
         </form>
 
         <ul className="mt-3">
@@ -58,7 +69,7 @@ function App() {
         </ul>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
